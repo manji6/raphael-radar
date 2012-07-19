@@ -137,9 +137,11 @@
           rulers[i].push(cl);
         }
 
-        if (i === 0) {
-          text = self.raphael.text(x1 - 7, y2, self.min_score + j * scale).attr($.extend(true, self.global_draw_options["text"], { "text-anchor": "end" }));
-          ruler_text.push(text);
+        if (self.global_draw_options["ruler_text"] !== false){
+          if (i === 0) {
+            text = self.raphael.text(x1 - 7, y2, self.min_score + j * scale).attr($.extend(true, self.global_draw_options["text"], { "text-anchor": "end" }));
+            ruler_text.push(text);
+          }
         }
       }
     }
