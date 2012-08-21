@@ -131,12 +131,16 @@
         x2 = lined_on(self.cx, points[i].x, j * 0.20 + r_len);
         y2 = lined_on(self.cy, points[i].y, j * 0.20 + r_len);
 
-        if (j !== 0 && j !== 5) {
-          cl = self.raphael.path("M " + x1 + " " + y1 + " L " + x2 + " " + y2).attr({ "stroke": "#777" });
-          cl.rotate(90);
-          rulers[i].push(cl);
+        // ruler graduations
+        if (self.global_draw_options["ruler_graduations"] !== false){
+          if (j !== 0 && j !== 5) {
+            cl = self.raphael.path("M " + x1 + " " + y1 + " L " + x2 + " " + y2).attr({ "stroke": "#777" });
+            cl.rotate(90);
+            rulers[i].push(cl);
+          }
         }
 
+        // ruler text(scale text)
         if (self.global_draw_options["ruler_text"] !== false){
           if (i === 0) {
             text = self.raphael.text(x1 - 7, y2, self.min_score + j * scale).attr($.extend(true, self.global_draw_options["text"], { "text-anchor": "end" }));
